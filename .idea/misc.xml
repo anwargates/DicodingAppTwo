@@ -3,7 +3,9 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
+        <entry key="..\:/Users/ndc/AndroidStudioProjects/DicodingAppTwo/app/src/main/res/layout/activity_detail_hero.xml" value="0.2128623188405797" />
         <entry key="..\:/Users/ndc/AndroidStudioProjects/DicodingAppTwo/app/src/main/res/layout/activity_main.xml" value="0.1" />
+        <entry key="..\:/Users/ndc/AndroidStudioProjects/DicodingAppTwo/app/src/main/res/layout/contoh.xml" value="0.2128623188405797" />
         <entry key="..\:/Users/ndc/AndroidStudioProjects/DicodingAppTwo/app/src/main/res/layout/item_cardview_hero.xml" value="0.2128623188405797" />
         <entry key="..\:/Users/ndc/AndroidStudioProjects/DicodingAppTwo/app/src/main/res/layout/item_grid_hero.xml" value="0.37083333333333335" />
         <entry key="..\:/Users/ndc/AndroidStudioProjects/DicodingAppTwo/app/src/main/res/layout/item_row_hero.xml" value="0.16540020263424518" />

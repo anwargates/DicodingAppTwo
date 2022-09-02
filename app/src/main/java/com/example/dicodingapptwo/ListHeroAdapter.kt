@@ -1,5 +1,6 @@
 package com.example.dicodingapptwo
 
+import android.content.Intent
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -35,7 +36,14 @@ class ListHeroAdapter(val listHero: ArrayList<Hero>) : RecyclerView.Adapter<List
         holder.tvName.text = hero.name
         holder.tvDetail.text = hero.detail
 
-        holder.itemView.setOnClickListener { onItemClickCallback.onItemClicked(listHero[holder.adapterPosition]) }
+        holder.itemView.setOnClickListener {
+            onItemClickCallback.onItemClicked(listHero[holder.adapterPosition])
+            val intent = Intent(holder.itemView.context, DetailHeroActivity::class.java)
+            intent.putExtra("NAME", hero.name)
+            intent.putExtra("DETAIL", hero.detail)
+            intent.putExtra("PHOTO", hero.photo)
+            holder.itemView.context.startActivity(intent)
+        }
     }
 
     override fun getItemCount(): Int {

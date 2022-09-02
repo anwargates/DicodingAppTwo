@@ -1,5 +1,6 @@
 package com.example.dicodingapptwo
 
+import android.content.Intent
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -25,7 +26,14 @@ class GridHeroAdapter(val listHero: ArrayList<Hero>) : RecyclerView.Adapter<Grid
             .apply(RequestOptions().override(350, 550))
             .into(holder.imgPhoto)
 
-        holder.itemView.setOnClickListener { onItemClickCallback.onItemClicked(listHero[holder.adapterPosition]) }
+        holder.itemView.setOnClickListener {
+            onItemClickCallback.onItemClicked(listHero[holder.adapterPosition])
+            val intent = Intent(holder.itemView.context, DetailHeroActivity::class.java)
+            intent.putExtra("NAME", listHero[holder.adapterPosition].name)
+            intent.putExtra("DETAIL", listHero[holder.adapterPosition].detail)
+            intent.putExtra("PHOTO", listHero[holder.adapterPosition].photo)
+            holder.itemView.context.startActivity(intent)
+        }
     }
 
     override fun getItemCount(): Int {
@@ -37,5 +45,6 @@ class GridHeroAdapter(val listHero: ArrayList<Hero>) : RecyclerView.Adapter<Grid
 
     interface OnItemClickCallback {
         fun onItemClicked(data: Hero)
+
     }
 }
