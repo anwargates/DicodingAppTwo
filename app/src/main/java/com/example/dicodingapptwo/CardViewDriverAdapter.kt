@@ -8,12 +8,11 @@ import android.widget.Button
 import android.widget.ImageView
 import android.widget.TextView
 import android.widget.Toast
-import androidx.core.content.ContextCompat.startActivity
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.bumptech.glide.request.RequestOptions
 
-class CardViewHeroAdapter(private val listHero: ArrayList<Hero>) : RecyclerView.Adapter<CardViewHeroAdapter.CardViewViewHolder>() {
+class CardViewDriverAdapter(private val listHero: ArrayList<Driver>) : RecyclerView.Adapter<CardViewDriverAdapter.CardViewViewHolder>() {
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): CardViewViewHolder {
         val view: View = LayoutInflater.from(parent.context).inflate(R.layout.item_cardview_hero, parent, false)
         return CardViewViewHolder(view)
@@ -39,7 +38,7 @@ class CardViewHeroAdapter(private val listHero: ArrayList<Hero>) : RecyclerView.
 
         holder.itemView.setOnClickListener {
             Toast.makeText(holder.itemView.context, "Kamu memilih " + listHero[position].name, Toast.LENGTH_SHORT).show()
-            val intent = Intent(holder.itemView.context, DetailHeroActivity::class.java)
+            val intent = Intent(holder.itemView.context, DetailDriverActivity::class.java)
             intent.putExtra("NAME", hero.name)
             intent.putExtra("DETAIL", hero.detail)
             intent.putExtra("PHOTO", hero.photo)

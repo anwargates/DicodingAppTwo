@@ -10,7 +10,7 @@ import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.bumptech.glide.request.RequestOptions
 
-class ListHeroAdapter(val listHero: ArrayList<Hero>) : RecyclerView.Adapter<ListHeroAdapter.ListViewHolder>() {
+class ListHeroAdapter(val listHero: ArrayList<Driver>) : RecyclerView.Adapter<ListHeroAdapter.ListViewHolder>() {
     private lateinit var onItemClickCallback: OnItemClickCallback
 
     fun setOnItemClickCallback(onItemClickCallback: OnItemClickCallback) {
@@ -38,7 +38,7 @@ class ListHeroAdapter(val listHero: ArrayList<Hero>) : RecyclerView.Adapter<List
 
         holder.itemView.setOnClickListener {
             onItemClickCallback.onItemClicked(listHero[holder.adapterPosition])
-            val intent = Intent(holder.itemView.context, DetailHeroActivity::class.java)
+            val intent = Intent(holder.itemView.context, DetailDriverActivity::class.java)
             intent.putExtra("NAME", hero.name)
             intent.putExtra("DETAIL", hero.detail)
             intent.putExtra("PHOTO", hero.photo)
@@ -51,6 +51,6 @@ class ListHeroAdapter(val listHero: ArrayList<Hero>) : RecyclerView.Adapter<List
     }
 
     interface OnItemClickCallback {
-        fun onItemClicked(data: Hero)
+        fun onItemClicked(data: Driver)
     }
 }

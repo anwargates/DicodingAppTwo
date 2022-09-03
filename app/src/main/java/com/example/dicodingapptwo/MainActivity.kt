@@ -1,5 +1,6 @@
 package com.example.dicodingapptwo
 
+import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.Menu
@@ -11,7 +12,7 @@ import androidx.recyclerview.widget.RecyclerView
 
 class MainActivity : AppCompatActivity() {
     private lateinit var rvHeroes: RecyclerView
-    private var list: ArrayList<Hero> = arrayListOf()
+    private var list: ArrayList<Driver> = arrayListOf()
     private var title: String = "Mode List"
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -22,7 +23,7 @@ class MainActivity : AppCompatActivity() {
         rvHeroes = findViewById(R.id.rv_heroes)
         rvHeroes.setHasFixedSize(true)
 
-        list.addAll(HeroesData.listData)
+        list.addAll(DriversData.listData)
         showRecyclerList()
     }
 
@@ -32,7 +33,7 @@ class MainActivity : AppCompatActivity() {
         rvHeroes.adapter = listHeroAdapter
 
         listHeroAdapter.setOnItemClickCallback(object : ListHeroAdapter.OnItemClickCallback {
-            override fun onItemClicked(data: Hero) {
+            override fun onItemClicked(data: Driver) {
                 showSelectedHero(data)
             }
         })
@@ -62,30 +63,37 @@ class MainActivity : AppCompatActivity() {
                 title = "Mode CardView"
                 showRecyclerCardView()
             }
+            R.id.about -> {
+                showAboutPage()
+            }
         }
         setActionBarTitle(title)
     }
     private fun showRecyclerGrid() {
         rvHeroes.layoutManager = GridLayoutManager(this, 2)
-        val gridHeroAdapter = GridHeroAdapter(list)
+        val gridHeroAdapter = GridDriverAdapter(list)
         rvHeroes.adapter = gridHeroAdapter
 
-        gridHeroAdapter.setOnItemClickCallback(object : GridHeroAdapter.OnItemClickCallback {
-            override fun onItemClicked(data: Hero) {
+        gridHeroAdapter.setOnItemClickCallback(object : GridDriverAdapter.OnItemClickCallback {
+            override fun onItemClicked(data: Driver) {
                 showSelectedHero(data)
             }
         })
     }
     private fun showRecyclerCardView() {
         rvHeroes.layoutManager = LinearLayoutManager(this)
-        val cardViewHeroAdapter = CardViewHeroAdapter(list)
+        val cardViewHeroAdapter = CardViewDriverAdapter(list)
         rvHeroes.adapter = cardViewHeroAdapter
     }
     private fun setActionBarTitle(title: String) {
         supportActionBar?.title = title
     }
 
-    private fun showSelectedHero(hero: Hero) {
+    private fun showSelectedHero(hero: Driver) {
         Toast.makeText(this, "Kamu memilih " + hero.name, Toast.LENGTH_SHORT).show()
+    }
+
+    private fun showAboutPage(){
+        startActivity(Intent(this, AboutActivity::class.java))
     }
 }

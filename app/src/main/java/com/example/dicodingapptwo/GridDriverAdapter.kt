@@ -9,7 +9,7 @@ import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.bumptech.glide.request.RequestOptions
 
-class GridHeroAdapter(val listHero: ArrayList<Hero>) : RecyclerView.Adapter<GridHeroAdapter.GridViewHolder>() {
+class GridDriverAdapter(val listHero: ArrayList<Driver>) : RecyclerView.Adapter<GridDriverAdapter.GridViewHolder>() {
     private lateinit var onItemClickCallback: OnItemClickCallback
 
     fun setOnItemClickCallback(onItemClickCallback: OnItemClickCallback) {
@@ -28,7 +28,7 @@ class GridHeroAdapter(val listHero: ArrayList<Hero>) : RecyclerView.Adapter<Grid
 
         holder.itemView.setOnClickListener {
             onItemClickCallback.onItemClicked(listHero[holder.adapterPosition])
-            val intent = Intent(holder.itemView.context, DetailHeroActivity::class.java)
+            val intent = Intent(holder.itemView.context, DetailDriverActivity::class.java)
             intent.putExtra("NAME", listHero[holder.adapterPosition].name)
             intent.putExtra("DETAIL", listHero[holder.adapterPosition].detail)
             intent.putExtra("PHOTO", listHero[holder.adapterPosition].photo)
@@ -44,7 +44,7 @@ class GridHeroAdapter(val listHero: ArrayList<Hero>) : RecyclerView.Adapter<Grid
     }
 
     interface OnItemClickCallback {
-        fun onItemClicked(data: Hero)
+        fun onItemClicked(data: Driver)
 
     }
 }

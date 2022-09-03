@@ -7,7 +7,7 @@ import android.widget.TextView
 import com.bumptech.glide.Glide
 import com.bumptech.glide.request.RequestOptions
 
-class DetailHeroActivity : AppCompatActivity() {
+class DetailDriverActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -15,14 +15,15 @@ class DetailHeroActivity : AppCompatActivity() {
         var tvName: TextView = findViewById(R.id.tv_item_name_detail)
         var tvDetail: TextView = findViewById(R.id.tv_item_detail_detail)
         var imgPhoto: ImageView = findViewById(R.id.img_item_photo_detail)
-        val heroName = intent.getStringExtra( "NAME" )
-        val heroDetail = intent.getStringExtra("DETAIL")
-        val heroPhoto = intent.getIntExtra("PHOTO",0)
-        tvName.text = heroName.toString()
-        tvDetail.text = heroDetail.toString()
+        val driverName = intent.getStringExtra( "NAME" )
+        val driverDetail = intent.getStringExtra("DETAIL")
+        val driverPhoto = intent.getIntExtra("PHOTO",0)
+        tvName.text = driverName.toString()
+        tvDetail.text = driverDetail.toString()
         Glide.with(this)
-            .load(heroPhoto)
+            .load(driverPhoto)
             .apply(RequestOptions().override(350, 550))
             .into(imgPhoto)
+        title=driverName.toString() + "'s Driver Details"
     }
 }
