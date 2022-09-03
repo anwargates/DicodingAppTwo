@@ -11,7 +11,7 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 
 class MainActivity : AppCompatActivity() {
-    private lateinit var rvHeroes: RecyclerView
+    private lateinit var rvDrivers: RecyclerView
     private var list: ArrayList<Driver> = arrayListOf()
     private var title: String = "Mode List"
 
@@ -20,21 +20,21 @@ class MainActivity : AppCompatActivity() {
         setContentView(R.layout.activity_main)
         setActionBarTitle(title)
 
-        rvHeroes = findViewById(R.id.rv_heroes)
-        rvHeroes.setHasFixedSize(true)
+        rvDrivers = findViewById(R.id.rv_drivers)
+        rvDrivers.setHasFixedSize(true)
 
         list.addAll(DriversData.listData)
         showRecyclerList()
     }
 
     private fun showRecyclerList() {
-        rvHeroes.layoutManager = LinearLayoutManager(this)
-        val listHeroAdapter = ListHeroAdapter(list)
-        rvHeroes.adapter = listHeroAdapter
+        rvDrivers.layoutManager = LinearLayoutManager(this)
+        val listDriverAdapter = ListDriverAdapter(list)
+        rvDrivers.adapter = listDriverAdapter
 
-        listHeroAdapter.setOnItemClickCallback(object : ListHeroAdapter.OnItemClickCallback {
+        listDriverAdapter.setOnItemClickCallback(object : ListDriverAdapter.OnItemClickCallback {
             override fun onItemClicked(data: Driver) {
-                showSelectedHero(data)
+                showSelectedDriver(data)
             }
         })
     }
@@ -70,27 +70,27 @@ class MainActivity : AppCompatActivity() {
         setActionBarTitle(title)
     }
     private fun showRecyclerGrid() {
-        rvHeroes.layoutManager = GridLayoutManager(this, 2)
-        val gridHeroAdapter = GridDriverAdapter(list)
-        rvHeroes.adapter = gridHeroAdapter
+        rvDrivers.layoutManager = GridLayoutManager(this, 2)
+        val gridDriverAdapter = GridDriverAdapter(list)
+        rvDrivers.adapter = gridDriverAdapter
 
-        gridHeroAdapter.setOnItemClickCallback(object : GridDriverAdapter.OnItemClickCallback {
+        gridDriverAdapter.setOnItemClickCallback(object : GridDriverAdapter.OnItemClickCallback {
             override fun onItemClicked(data: Driver) {
-                showSelectedHero(data)
+                showSelectedDriver(data)
             }
         })
     }
     private fun showRecyclerCardView() {
-        rvHeroes.layoutManager = LinearLayoutManager(this)
-        val cardViewHeroAdapter = CardViewDriverAdapter(list)
-        rvHeroes.adapter = cardViewHeroAdapter
+        rvDrivers.layoutManager = LinearLayoutManager(this)
+        val cardViewDriverAdapter = CardViewDriverAdapter(list)
+        rvDrivers.adapter = cardViewDriverAdapter
     }
     private fun setActionBarTitle(title: String) {
         supportActionBar?.title = title
     }
 
-    private fun showSelectedHero(hero: Driver) {
-        Toast.makeText(this, "Kamu memilih " + hero.name, Toast.LENGTH_SHORT).show()
+    private fun showSelectedDriver(driver: Driver) {
+        Toast.makeText(this, "Kamu memilih " + driver.name, Toast.LENGTH_SHORT).show()
     }
 
     private fun showAboutPage(){

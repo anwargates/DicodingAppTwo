@@ -131,11 +131,11 @@ object DriversData {
         get() {
             val list = arrayListOf<Driver>()
             for (position in driverNames.indices) {
-                val hero = Driver()
-                hero.name = driverNames[position]
-                hero.detail = driverDetails[position]
-                hero.photo = driverImages[position]
-                list.add(hero)
+                val driver = Driver()
+                driver.name = driverNames[position]
+                driver.detail = driverDetails[position]
+                driver.photo = driverImages[position]
+                list.add(driver)
             }
             return list
         }

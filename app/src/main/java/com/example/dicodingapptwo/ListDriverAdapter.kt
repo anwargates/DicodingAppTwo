@@ -10,7 +10,7 @@ import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.bumptech.glide.request.RequestOptions
 
-class ListHeroAdapter(val listHero: ArrayList<Driver>) : RecyclerView.Adapter<ListHeroAdapter.ListViewHolder>() {
+class ListDriverAdapter(val listDriver: ArrayList<Driver>) : RecyclerView.Adapter<ListDriverAdapter.ListViewHolder>() {
     private lateinit var onItemClickCallback: OnItemClickCallback
 
     fun setOnItemClickCallback(onItemClickCallback: OnItemClickCallback) {
@@ -23,31 +23,31 @@ class ListHeroAdapter(val listHero: ArrayList<Driver>) : RecyclerView.Adapter<Li
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ListViewHolder {
-        val view: View = LayoutInflater.from(parent.context).inflate(R.layout.item_row_hero, parent, false)
+        val view: View = LayoutInflater.from(parent.context).inflate(R.layout.item_row_driver, parent, false)
         return ListViewHolder(view)
     }
 
     override fun onBindViewHolder(holder: ListViewHolder, position: Int) {
-        val hero = listHero[position]
+        val driver = listDriver[position]
         Glide.with(holder.itemView.context)
-            .load(hero.photo)
+            .load(driver.photo)
             .apply(RequestOptions().override(55, 55))
             .into(holder.imgPhoto)
-        holder.tvName.text = hero.name
-        holder.tvDetail.text = hero.detail
+        holder.tvName.text = driver.name
+        holder.tvDetail.text = driver.detail
 
         holder.itemView.setOnClickListener {
-            onItemClickCallback.onItemClicked(listHero[holder.adapterPosition])
+            onItemClickCallback.onItemClicked(listDriver[holder.adapterPosition])
             val intent = Intent(holder.itemView.context, DetailDriverActivity::class.java)
-            intent.putExtra("NAME", hero.name)
-            intent.putExtra("DETAIL", hero.detail)
-            intent.putExtra("PHOTO", hero.photo)
+            intent.putExtra("NAME", driver.name)
+            intent.putExtra("DETAIL", driver.detail)
+            intent.putExtra("PHOTO", driver.photo)
             holder.itemView.context.startActivity(intent)
         }
     }
 
     override fun getItemCount(): Int {
-        return listHero.size
+        return listDriver.size
     }
 
     interface OnItemClickCallback {
